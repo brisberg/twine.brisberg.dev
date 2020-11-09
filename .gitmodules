@@ -1,3 +1,6 @@
 [submodule "docs/cellar-crawl"]
 	path = docs/cellar-crawl
 	url = https://github.com/brisberg/cellar-crawl
+[submodule "docs/journey"]
+	path = docs/journey
+	url = https://github.com/brisberg/journey
