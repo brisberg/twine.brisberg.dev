@@ -1,55 +1,23 @@
-name: Deploy Games
+name: Update All Games
 
 on:
-  push:
-    branches:
-      # And only on main branch
-      - main
+  repository_dispatch:
+    types: [update-all-games]
 
 jobs:
-  deploy-gh-pages:
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        # Specify all desired node versions
-        node-version: [10.x]
+  update-all-games:
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true  # Fetch all Game submodules
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+      - name: Update all game submodules
+        run: git submodule foreach git pull origin gh-pages
 
-      - name: Use Go 1.15
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.15.x
-
-      - name: Setup Tweego
-        run: go get github.com/tmedwards/tweego
-
-      # - name: List Games
-      #   run: cd games && list games
-
-      - name: Spindle Build
+      - name: Commit new updates
         run: |
-          cd games/cellar-crawl
-          yarn install
-          yarn run spindle
-
-      - name: Prepare Deploy Package
-        run: |
-          mkdir dist
-          mv games/cellar-crawl/output/cellar-crawl.html dist
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.5.9
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages  # The branch the action should deploy to.
-          FOLDER: dist      # The folder the action should deploy.
+          git add .
+          git commit -m "Updating published games"
+          git push

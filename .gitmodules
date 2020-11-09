@@ -1,3 +1,6 @@
 [submodule "games/cellar-crawl"]
 	path = games/cellar-crawl
 	url = https://github.com/brisberg/cellar-crawl
+[submodule "docs/cellar-crawl"]
+	path = docs/cellar-crawl
+	url = https://github.com/brisberg/cellar-crawl
