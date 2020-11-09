@@ -29,10 +29,15 @@ jobs:
       #   run: cd games && list games
 
       - name: Open Cellar Crawl
-        run: cd games/cellar-crawl
+        run: |
+          pwd
+          cd games/cellar-crawl
+          pwd
 
       - name: Spindle Build
         run: |
+          pwd
+          games/cellar-crawl
           yarn install
           yarn run spindle
           cd ../..
