@@ -31,7 +31,7 @@ jobs:
           go-version: 1.15.x
 
       - name: Setup Tweego
-        run: go install github.com/tmedwards/tweego
+        run: go get github.com/tmedwards/tweego
 
       # - name: List Games
       #   run: cd games && list games
