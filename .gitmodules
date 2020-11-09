@@ -1,0 +1,3 @@
+[submodule "games/cellar-crawl"]
+	path = games/cellar-crawl
+	url = https://github.com/brisberg/cellar-crawl

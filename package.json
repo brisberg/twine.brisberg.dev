@@ -1,0 +1,10 @@
+{
+  "name": "twine.brisberg.dev",
+  "version": "1.0.0",
+  "description": "Production deployment of @brisberg Twine games.",
+  "main": "index.js",
+  "repository": "https://github.com/brisberg/twine.brisberg.dev.git",
+  "author": "brisberg <brandon.risberg@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
