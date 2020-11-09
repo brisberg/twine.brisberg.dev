@@ -28,19 +28,11 @@ jobs:
       # - name: List Games
       #   run: cd games && list games
 
-      - name: Open Cellar Crawl
-        run: |
-          pwd
-          cd games/cellar-crawl
-          pwd
-
       - name: Spindle Build
         run: |
-          pwd
-          games/cellar-crawl
+          cd games/cellar-crawl
           yarn install
           yarn run spindle
-          cd ../..
 
       - name: Prepare Deploy Package
         run: |
