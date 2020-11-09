@@ -1,4 +1,5 @@
 name: Update All Games
+# Triggered by a repo_dispatch from sub repo. Update all submodules and commit to main
 
 on:
   repository_dispatch:
@@ -18,31 +19,8 @@ jobs:
 
       - uses: EndBug/add-and-commit@v5 # You can change this to use a specific version
         with:
-          # The name of the user that will be displayed as the author of the commit
-          # Default: author of the commit that triggered the run
-          # author_name: Your Name
-
-          # The email of the user that will be displayed as the author of the commit
-          # Default: author of the commit that triggered the run
-          # author_email: mail@example.com
-
-          # Name of the branch to use, if different from the one that triggered the workflow
-          # Default: the branch that triggered the run
-          # branch: some-branch
-
-          # The message for the commit
-          # Default: 'Commit from GitHub Actions (name of the workflow)'
-          message: 'Updating published Games'
-
           # The flag used on the pull strategy
-          # Default: '--no-rebase'
           pull_strategy: '--no-ff'
         env:
           # This is necessary in order to push a commit to the repo
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
-
-      # - name: Commit new updates
-      #   run: |
-      #     git add .
-      #     git commit -m "Updating published games"
-      #     git push
