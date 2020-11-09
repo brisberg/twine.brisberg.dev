@@ -14,7 +14,7 @@ jobs:
           submodules: true  # Fetch all Game submodules
 
       - name: Update all game submodules
-        run: git submodule foreach git pull origin gh-pages
+        run: git submodule foreach git pull --ff-only origin gh-pages
 
       - name: Commit new updates
         run: |
